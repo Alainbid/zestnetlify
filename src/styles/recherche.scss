@@ -1,0 +1,133 @@
+#btn-valid {
+  margin: auto;
+}
+.annule {
+  padding: 7px;
+  background: #43403d;
+  color: #d4caca;
+  font-size: 1.4rem;
+  margin-left: 104px;
+  font-weight: 400;
+}
+#annule{
+  display:none;
+}
+
+.h2-Recherche {
+  display: flex;
+  font-size: 2rem;
+  background: #232a30;
+  color: #c4b08d;
+  justify-content: center;
+}
+#depuis-container {
+  margin-bottom: 20px;
+}
+#budget-recherche {
+  margin-top: 10px;
+}
+#dbl-clic {
+  background: "aliceblue";
+  color: #c3f88c;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+#pointe-container {
+  margin-top: 10px;
+}
+#recherche-cont {
+  display: none;
+  margin: auto;
+  font-size: 1.3rem;
+  width: 620px;
+  background: #43403d;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+#bsbbva {
+  margin-top: 10px;
+}
+
+.bourso-container {
+  padding: 10px;
+  font-size: 1.2rem;
+  background: #43403d;
+}
+.recherche-form {
+  width: 80%;
+  background-color: #86837d;
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.label-saisie {
+  padding-right: 31px;
+  font-size: 1.2rem;
+  color: white;
+}
+.input-recherche {
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding-top: 8px;
+  padding-bottom: 11px;
+  background: wheat;
+  color: #060606;
+  border-radius: 14px;
+  border: none;
+}
+
+#tbch-pointage {
+  max-width: 1302px;
+  display: none;
+  margin: auto;
+  flex-direction: column;
+}
+th {
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: wheat;
+  background-color: #43403d;
+  height: 2em;
+  font-family: monospace;
+}
+
+td {
+  cursor: pointer;
+  height: 2rem;
+  font-size: 1.1rem;
+  color: #fde6cb;
+  font-family: system-ui;
+  background: #090808;
+}
+
+tr :hover {
+  background-color: rgb(155, 156, 117);
+}
+.r-total {
+  font-size: 1.4rem;
+}
+
+.div-span,
+.span-annule {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  background-color: #43403d;
+}
+.lancer {
+  color: black;
+  background-color: wheat;
+  font-size: 1.4rem;
+  margin-left: 2px;
+  border-radius: 10px;
+  font-weight: 400;
+}
+.lancer :hover {
+  background-color: whitesmoke;
+}
+

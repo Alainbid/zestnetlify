@@ -1,0 +1,36 @@
+
+.listdep-container {
+  border-radius: 21px;
+  z-index: 1100000;
+  position: absolute;
+  min-width: 284px;
+  display: flex;
+  background: rgb(71 85 96 / 44%);
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.listdep-table {
+  border-radius: 20px;
+  margin-top: 20px;
+  margin-bottom: 22px;
+  min-width: 230px;
+  padding-bottom: 19px;
+  padding-top: 15px;
+  background-color: #394652;
+}
+.listdep-ligne {
+  margin:2px;
+  color: wheat;
+  background-color: #394652;
+  font-size: 1rem;
+  
+}
+.listdep-ligne:hover {
+  cursor: pointer;
+  background: rgb(165, 188, 220);
+  color: black;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+

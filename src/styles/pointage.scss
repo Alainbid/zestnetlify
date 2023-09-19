@@ -1,0 +1,44 @@
+
+.h2-pointage {
+  display: flex;
+  justify-content: center;
+  color: #c4b08d;
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+.point-container{
+  display: flex;
+  justify-content: center;
+}
+.tb-pointage{
+  margin :auto;
+  min-width: 1110px;
+}
+.tbc-pointage{
+  margin: auto;
+  max-width: 1302px;
+  min-width: 1110px;
+}
+ .pt-total{
+  background:"aliceblue";
+  color: #c3f88c;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.r-total{
+  font-size: 1.4rem;
+}
+#tr-pointage:nth-child(even) {
+  background: #3b3939
+}
+
+#td-l-point{
+  cursor:none;
+  background-color: rgb(34, 32, 29);
+}
+#td-p-pointage:hover{
+  background-color: rgb(34, 71, 51);
+   cursor: pointer;
+}
