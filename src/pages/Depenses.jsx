@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useState } from "react";
 import { db } from "./Firebasefirestore";
@@ -20,8 +19,9 @@ import {
 
 
 const Depenses = () => {
+  
   const [Depenses, setDepenses] = useState([]);
-  const depensesCollectionRef = collection(db, "depenses");
+ const depensesCollectionRef = collection(db, "depenses");
   const [natureDepenses, setNatureDepenses] = useState("xxx");
   const [showModal, setShowModal] = useState(false);
   const [idItem, setIdItem] = useState("");

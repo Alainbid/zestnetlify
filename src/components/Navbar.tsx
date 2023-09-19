@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import "../styles/navbar.scss";
 
 const Navbarre = () => {
@@ -18,7 +18,7 @@ const Navbarre = () => {
         <NavLink to="/Depenses" className="navlk">
           Dépenses
         </NavLink>
-        <NavLink to="/Fournisseurs" className="navlk">
+        <NavLink to={"/Fournisseurs"} className="navlk">
           Fournisseurs
         </NavLink>
         
