@@ -15,10 +15,10 @@ const Navbarre = () => {
         <NavLink to="/Recherche" className="navlk">
           Rechercher
         </NavLink>
-        <NavLink to="/Depenses" className="navlk">
+        <NavLink to="/Dépenses" className="navlk">
           Dépenses
         </NavLink>
-        <NavLink to={"/Fournisseurs"} className="navlk">
+        <NavLink to="/Fournisseurs" className="navlk">
           Fournisseurs
         </NavLink>
         

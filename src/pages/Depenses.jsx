@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { db } from "./Firebasefirestore";
 import Modale from "../components/Modale.jsx";
 import "../styles/depenses.scss";
@@ -14,23 +14,37 @@ import {
   query,
   orderBy,
 } from "firebase/firestore";
+import { useParams } from "react-router-dom";
 
 
 
 
-const Depenses = () => {
-  
+const Depenses = (val) => {
+  let {choix} = useParams();
+ // console.log('choix',choix);
+  var depensesCollectionRef ='';
   const [Depenses, setDepenses] = useState([]);
- const depensesCollectionRef = collection(db, "depenses");
   const [natureDepenses, setNatureDepenses] = useState("xxx");
   const [showModal, setShowModal] = useState(false);
   const [idItem, setIdItem] = useState("");
   const [modalPosition, setModalPosition] = useState([0, 0]);
 
+  (choix !== 'Depenses') ? depensesCollectionRef =collection(db,'benef') :
+  depensesCollectionRef =collection(db,'depenses') ;
+
+
+ useEffect(() => {
+ getDepenses()
+  }
+  );
+
+
+
   const getDepenses = async () => {
     try {
-      // console.log('lire BD');
+      console.log('lire BD');
       const data = await getDocs(
+       
         query(depensesCollectionRef, orderBy("nature"))
       );
       setDepenses(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
@@ -108,7 +122,7 @@ const Depenses = () => {
       ></Modale>
 
       <div className="depense-container">
-        <ul className="f-li">Types de dépenses</ul>
+        <ul className="f-li">Liste des {choix}</ul>
 
         <div className="depense-table">
           {Depenses.map((item, index) => {

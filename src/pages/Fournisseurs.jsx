@@ -1,7 +1,7 @@
 import React, {  useState } from "react";
 import Navbar from "../components/Navbar";
 import "../styles/depenses.scss";
-
+import { useParams } from 'react-router-dom'
 import { db } from "../pages/Firebasefirestore";
 import Modale from "../components/Modale";
 import {
@@ -16,17 +16,29 @@ import {
 } from "firebase/firestore";
 
 const SnapshotBenefs = () => {
+    const { handle } = useParams()
+      const [ref] = React.useState('benef')
   const [Benefs, setBenefs] = useState([]);
   const [naturebenefs, setNaturebenefs] = useState("xxx");
   const [showModal, setShowModal] = useState(false);
   const [idItem, setIdItem] = useState("");
   const [modalPosition, setModalPosition] = useState([0, 0]);
+ 
+  // React.useEffect(() => {
+  // setRef(handle);
+  // }, [handle])
+console.log('handle',handle);
+  console.log('ref',ref);
 
-  const benefsCollectionRef = collection(db, "benef");
+  const benefsCollectionRef = collection(db, ref);
+
+
 
  
 
   const getBenefs = async () => {
+
+
     try{
   //  console.log('lire BD');
     const data = await getDocs(query(benefsCollectionRef, orderBy("qui")));
