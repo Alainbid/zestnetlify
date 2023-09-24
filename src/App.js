@@ -1,7 +1,7 @@
 import "./styles/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Saisie from "./pages/Saisie";
-import Dépenses from './pages/Depenses';
+import Dépenses from './pages/DepensesBenefs';
 // import Fournisseurs from './pages/Fournisseurs';
 import Pointage from './pages/Pointage';
 import Recherche from './pages/Recherche';

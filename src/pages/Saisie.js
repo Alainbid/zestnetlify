@@ -13,7 +13,7 @@ function Saisie() {
   const [menage, setMenage] = useState(true);
   const [mode, setMode] = useState("Visa");
   const [temps, setTemps] = useState(0);
-  const [somme, setSomme] = useState("");
+  const [somme, setSomme] = useState(0);
   const [navHidden, setNavHidden] = useState(true);
   const { register, handleSubmit } = useForm();
   const [showCalendar, setShowCalendar] = useState(true);
@@ -24,10 +24,10 @@ function Saisie() {
 
   const onSubmit = async (data) => {
     //console.log("somme",somme);
-    if (somme !== "") {
+    if (somme !== 0) {
       data.new = false;
       data.numero = "";
-      data.somme = somme;
+      data.somme = parseFloat (somme);
       data.mode = mode;
       data.banque = banque;
       data.menage = menage;

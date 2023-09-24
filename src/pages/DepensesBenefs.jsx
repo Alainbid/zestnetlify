@@ -16,38 +16,31 @@ import {
 } from "firebase/firestore";
 import { useParams } from "react-router-dom";
 
-
-
-
-const Depenses = (val) => {
-  let {choix} = useParams();
- // console.log('choix',choix);
-  var depensesCollectionRef ='';
-  const [Depenses, setDepenses] = useState([]);
-  const [natureDepenses, setNatureDepenses] = useState("xxx");
+const BenefDepenses = (val) => {
+  let { choix } = useParams();
+  // console.log('choix',choix);
+  var depensesCollectionRef = "";
+  const [DepBenefs, setDepBenefs] = useState([]);
+  const [libelles, setLibelles] = useState("xxx");
   const [showModal, setShowModal] = useState(false);
   const [idItem, setIdItem] = useState("");
   const [modalPosition, setModalPosition] = useState([0, 0]);
 
-  (choix !== 'Depenses') ? depensesCollectionRef =collection(db,'benef') :
-  depensesCollectionRef =collection(db,'depenses') ;
+  choix !== "Dépenses"
+    ? (depensesCollectionRef = collection(db, "benef"))
+    : (depensesCollectionRef = collection(db, "depenses"));
 
+  useEffect(() => {
+    getDepBenef();
+  },[choix]);
 
- useEffect(() => {
- getDepenses()
-  }
-  );
-
-
-
-  const getDepenses = async () => {
+  const getDepBenef = async () => {
     try {
-      console.log('lire BD');
+      console.log("lire BD");
       const data = await getDocs(
-       
         query(depensesCollectionRef, orderBy("nature"))
       );
-      setDepenses(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      setDepBenefs(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     } catch (error) {
       alert("erreur de connexion", error);
       console.log("Erreur ", error);
@@ -61,7 +54,7 @@ const Depenses = (val) => {
     //  console.log("data nature ", data.nature, "   id  ", idItem);
     const lequel = doc(depensesCollectionRef, idItem);
     await updateDoc(lequel, data);
-    getDepenses();
+    getDepBenef();
     dimmer("#f5deb3");
     setShowModal(false);
   };
@@ -70,22 +63,21 @@ const Depenses = (val) => {
     const lequel = doc(depensesCollectionRef, id);
     await deleteDoc(lequel);
     // console.log("item ", lequel);
-    getDepenses();
+    getDepBenef();
     dimmer("#f5deb3");
     setShowModal(false);
   };
 
   const ajouter = async (newItem) => {
     // console.log("item ajouté  ", newItem);
-    await addDoc(collection(db, "depenses"), {
+    await addDoc(depensesCollectionRef, {
       nature: newItem,
     });
-    getDepenses();
+    getDepBenef();
     dimmer("#f5deb3");
     setShowModal(false);
   };
 
-  
   const dimmer = (couleur) => {
     var x = document.getElementsByClassName("depense-ligne");
     var i;
@@ -95,7 +87,7 @@ const Depenses = (val) => {
   };
 
   //pour actualiser la table au début
-  if (Depenses[0] === undefined) getDepenses();
+  if (DepBenefs[0] === undefined) getDepBenef();
 
   return (
     <div>
@@ -109,7 +101,7 @@ const Depenses = (val) => {
         }}
         posdex={modalPosition[0]}
         posdey={modalPosition[1]}
-        leQuel={natureDepenses}
+        leQuel={libelles}
         onValider={(x) => {
           modifier(x);
         }}
@@ -125,7 +117,7 @@ const Depenses = (val) => {
         <ul className="f-li">Liste des {choix}</ul>
 
         <div className="depense-table">
-          {Depenses.map((item, index) => {
+          {DepBenefs.map((item, index) => {
             return (
               <ul
                 className="depense-ligne"
@@ -136,10 +128,10 @@ const Depenses = (val) => {
                   event.preventDefault();
                   // console.log(" x ", event.clientX, "   y = ", event.clientY);
                   setModalPosition([event.clientX, event.clientY]);
-                  setNatureDepenses(item.nature);
+                  setLibelles(item.nature);
                   setIdItem(item.id);
                   setShowModal(true);
-                  // console.log("natureBenefs =", { natureDepenses });
+                  // console.log("natureBenefs =", { libelles });
                   // console.log("itmId =", { idItem });
                 }}
               >
@@ -156,4 +148,4 @@ const Depenses = (val) => {
   );
 };
 
-export default Depenses;
+export default BenefDepenses;

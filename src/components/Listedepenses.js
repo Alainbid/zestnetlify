@@ -13,7 +13,7 @@ const ListeDepenses = (props) => {
   const [liste, setListe] = useState([]);
   const getDepBenef =  useCallback( async () => {
     if (props.open === 'benef') {
-      const data = await getDocs(query(collection(db, "benef"), orderBy("qui")));
+      const data = await getDocs(query(collection(db, "benef"), orderBy("nature")));
     setListe(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
 
     }
@@ -46,16 +46,16 @@ const ListeDepenses = (props) => {
                 className="listdep-ligne"
                 key={item.id}
                 onClick={(event) => {
-                  var x = ''
+                  var x = item.nature;
                   event.preventDefault();
-                  props.open === 'benef' ?  x =item.qui : x = item.nature
+                //  props.open === 'benef' ?  x =item.qui : x = item.nature
                   props.onValider(x,props.open);
                   props.onClose();
                 }}
               >
                 {/* pour mettre un 0 si de 1 à 9 */}
                 {index < 9 ? "0" + (index + 1).toString(10) : index + 1}{" "}
-                {props.open === 'benef' ? item.qui : item.nature}
+                { item.nature}
               </ul>
              );
             })
