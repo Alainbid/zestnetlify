@@ -117,7 +117,7 @@ function Calendar   (dequi)  {
       {/* <div> {pourqui.length} </div> */}
         <table id="calendar">
           <thead className="th-cal">
-            <tr className="tr-cal">
+            <tr className="tr-cal" id="tr-cal">
               <th>Dim</th>
               <th>Lun</th>
               <th>Mar</th>
@@ -206,9 +206,6 @@ const toUnixTime = (
   let hoyoh = new Date(tx).getTime(); //date du jour à 0 heure millis
 
   let datechoisieHeure = datechoisie + (hoy - hoyoh);
-  // console.log("datechoisieHeure", new Date(datechoisieHeure).toLocaleString());
-  // console.log("datechoisieHeure", datechoisieHeure);
-  // console.log("pourquel", pourquel);
 
   if (pourquel === "saisie") {
     return datechoisieHeure;

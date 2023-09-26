@@ -24,10 +24,12 @@ function Saisie() {
 
   const onSubmit = async (data) => {
     //console.log("somme",somme);
-    if (somme !== 0) {
+
+    if (somme !== 0 ) {
+    // if (somme !== 0 && natureDepense !== "" && quiBenef !== "") {
       data.new = false;
       data.numero = "";
-      data.somme = parseFloat (somme);
+      data.somme = parseFloat(somme);
       data.mode = mode;
       data.banque = banque;
       data.menage = menage;
@@ -36,12 +38,18 @@ function Saisie() {
       data.date = temps;
       data.nature = natureDepense;
       data.benef = quiBenef;
-      
 
       await addDoc(journalCollectionRef, data);
       console.log("data", data);
-    }
-    annuler();
+      annuler();
+    }else  {  console.log('erreur');}
+    // if (somme === 0) {
+    //   alert("Renseignez le montant");
+    // } else if (quiBenef === "") {
+    //   alert("Renseignez le fournisseur");
+    // } else {
+    //   alert("Renseignez la nature de la dépense ");
+    // }
   };
 
   const handleChange = (e) => {
@@ -101,7 +109,8 @@ function Saisie() {
         posdey={listDepPosition[1]}
       ></ListeDepenses>
       <div id="saisie-container">
-        <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
+        <form className="form-container">
+          {/* <form className="form-container" onSubmit={handleSubmit(onSubmit)}> */}
           <fieldset className="fdset-saisie" {...register("banque")}>
             <div className="banque-container">
               <label className="saisie-radio">
@@ -181,6 +190,7 @@ function Saisie() {
             <label className="label-saisie">
               Montant
               <input
+              autoComplete="off"
                 className="input-saisie"
                 {...register("somme")}
                 onChange={modifSomme}
@@ -193,10 +203,12 @@ function Saisie() {
             <label className="label-saisie">
               Dépense
               <input
+              autoComplete="off"
                 className="input-saisie"
-                // {...register("nature")}
+                 {...register("nature")}
                 type="text"
                 id="nature"
+               required
                 onClick={(event) => {
                   event.preventDefault();
                   setListDepBenPosition([event.clientX, event.clientY - 200]);
@@ -208,10 +220,12 @@ function Saisie() {
             <label className="label-saisie">
               Fournisseur
               <input
+              autoComplete="off"
                 className="input-saisie"
                 {...register("benef")}
                 type="text"
                 id="benef"
+                required
                 onClick={(event) => {
                   event.preventDefault();
                   setListDepBenPosition([event.clientX, event.clientY - 250]);
@@ -250,7 +264,11 @@ function Saisie() {
           </p>
           <span className="btn-fin">
             {" "}
-            <button type="submit" className="btn btn-last">
+            <button
+              type="submit"
+              className="btn btn-last"
+              onClick={handleSubmit(onSubmit)}
+            >
               Valider
             </button>
             <button onClick={annuler} className="btn btn-last">

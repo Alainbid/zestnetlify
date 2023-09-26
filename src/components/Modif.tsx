@@ -128,6 +128,7 @@ const Modif = (props: any) => {
             <label className="modif-label">
               Somme
               <input
+              autoComplete="off"
                 className="modif-saisie"
                 onChange={(event) => {
                   modifSomme(event);
@@ -141,6 +142,7 @@ const Modif = (props: any) => {
             <label className="modif-label">
               Dépense
               <input
+              autoComplete="off"
                 className="modif-saisie"
                 onChange={(event) => modifNature(event)}
                 type="text"
@@ -152,6 +154,7 @@ const Modif = (props: any) => {
             <label className="modif-label">
               Fournisseur
               <input
+              autoComplete="off"
                 className="modif-saisie"
                  onChange={(event) => modifBenef(event)}
                 type="text"
