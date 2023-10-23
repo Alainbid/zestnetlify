@@ -47,31 +47,16 @@ const Recherche = () => {
       parseInt(dat0[1], 10) - 1,
       parseInt(dat0[0], 10)
     ).getTime();
-
     let conditions = [];
     if (banque !== "all") conditions.push(where("banque", "==", banque));
-
-    if (pointe && !nonpointe) {
-      conditions.push(where("pointe", "==", true));
-    }
-
-    if (nonpointe && !pointe) {
-      conditions.push(where("pointe", "==", false));
-    }
-
-    if (menage) {
-      conditions.push(where("menage", "==", true));
-      console.log("63", menage);
-    }
-
+    if (pointe && !nonpointe) {  conditions.push(where("pointe", "==", true));  }
+    if (nonpointe && !pointe) {  conditions.push(where("pointe", "==", false)); }
+    if (menage) {  conditions.push(where("menage", "==", true)); }
     if (somme !== 0) conditions.push(where("somme", "==", parseFloat(somme)));
-
     if (note !== "") conditions.push(where("note", "==", note));
-
     if (nature !== "") conditions.push(where("nature", "==", nature));
-
     if (benef !== "") conditions.push(where("benef", "==", benef));
-
+      console.log('conditions',conditions);
     conditions.push(orderBy("temps", "desc"));
     // console.log("debut de getjournal", debut);
     conditions.push(endAt(dat1));
@@ -84,6 +69,7 @@ const Recherche = () => {
     try {
       var total = 0.0;
       const data = await getDocs(lequery);
+      //calcul du total des sommes
       data.forEach((element) => {
         total += element.data().somme * 100;
       });
@@ -95,7 +81,7 @@ const Recherche = () => {
 
       // console.log("nombre de data", data.docs.length);
     } catch (error) {
-      alert("Erreur du query ", error);
+      alert("Erreur sur la recherche ", error);
       console.log("Erreur du query ", error);
     }
   }, [banque, benef, fin, pointe, nonpointe, menage, nature, somme, note]);
@@ -138,9 +124,11 @@ const Recherche = () => {
     e.target.checked ? setnonPointe(true) : setnonPointe(false);
   };
 
+
+
   const modifSomme = (e) => {
     //console.log("e", e.target.value);
-    e.target.value === 0 ? setSomme(0) : setSomme(e.target.value);
+   e.target.value === 0 ? setSomme(0): setSomme(e.target.value);
   };
 
   const modifNote = (e) => {
